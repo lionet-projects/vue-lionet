@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Define Property</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+        var show = document.getElementById("box")
+        var obj = {}
+        // vue不修改DOM,直接显式修改值
+        // 通过Object的defineProperty中的set()和get()方法观察拦截通知实现的
+        Object.defineProperty(obj, "value", {
+            set(value) {
+                console.log("修改了当前值.", value)
+                show.innerHTML = value
+            },
+            get() {
+                console.log("获取到了当前值.")
+            }
+        })
+
+    </script>
+</body>
+
+</html>
