@@ -9,6 +9,8 @@
 </head>
 
 <body>
+    <!-- vue遵循MVVM设计 -->
+    <!-- view层 -->
     <div id="box">
         {{10+20}}
 
@@ -16,8 +18,10 @@
     </div>
     <script>
         // 对指定位置使用vue模板语法
-        var vue = new Vue({
+        // viewModel层
+        var vm = new Vue({
             el: "#box",
+            // model层
             data: {
                 name: "Chova",
             }

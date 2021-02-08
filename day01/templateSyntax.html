@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语法</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        .aquamarine {
+            background-color: aquamarine;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <!-- vue指令以 v- 开头 -->
+        <!-- v-on : 绑定事件的指令 -->
+        <button v-on:click="handleClick()">修改事件</button>
+        <!-- v-on的简写方式 -->
+        <button @Click="handleClick()">修改</button>
+        <scan>{{name}}</scan>
+        <hr />
+        <!-- v-show : 是否显示 -->
+        <div v-show="isShow">
+            动态显示和隐藏模块
+        </div>
+        <hr />
+        <!-- v-if : 条件指令 -->
+        <div v-if="isCreated">
+            动态创建或者删除
+        </div>
+        <hr />
+        <!-- v-bind : 绑定属性的指令 -->
+        <div v-bind:class="isActive ? 'aquamarine' : 'yellow'">动态切换背景色</div>
+        <!-- v-bind的简写方式 -->
+        <div :class="isActive ? 'aquamarine' : 'yellow'">动态切换背景色</div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                name: "Chova",
+                isShow: true,
+                isCreated: true,
+                isActive: true,
+            },
+            methods: {
+                handleClick() {
+                    console.log("handleClick")
+                    this.name = "Chovas"
+                    this.isShow = !this.isShow
+                    this.isCreated = !this.isCreated
+                    this.isActive = !this.isActive
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
