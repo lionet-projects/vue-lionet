@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待办列表</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="box">
+        <!-- vue的事件中,函数的不加()则可以得到事件对象 -->
+        <input type="text" @input="handleInputOld" placeholder="初始版本" />
+        <button @click="handleClickOld()">初始版本添加待办任务</button>
+        <!-- 双向绑定指令 -->
+        <input type="text" v-model="value" placeholder="Vue版本" />
+        <button @click="handleClick()">Vue版本添加待办任务</button>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                value: ""
+            },
+            methods: {
+                handleClickOld() {
+                    console.log("添加待办任务:", this.value);
+                    console.log(vm);
+                },
+                handleInputOld(event) {
+                    console.log("input:", event.target.value);
+                    this.value = event.target.value
+                },
+                handleClick() {
+                    console.log("Vue版本添加待办任务:", this.value);
+                }
+            },
+        })
+
+    </script>
+</body>
+
+</html>
